@@ -15,7 +15,7 @@ class Genre(models.Model):
     slug = models.SlugField('Slug жанра', max_length=50, unique=True)
 
 
-class Title_Genre(models.Model):
+class TitleGenre(models.Model):
     genre = models.ForeignKey('Genre', on_delete=models.CASCADE)
     title = models.ForeignKey('Title', on_delete=models.CASCADE)
 
@@ -25,7 +25,7 @@ class Title(models.Model):
     year = models.IntegerField('Год выпуска', validators=[
         max_value_current_year])
     description = models.TextField('Описание произведения', blank=True)
-    genre = models.ManyToManyField(Genre, through=Title_Genre,
+    genre = models.ManyToManyField(Genre, through=TitleGenre,
                                    related_name='genre',)
     category = models.ForeignKey(Category, on_delete=models.SET(''),
                                  related_name='category')
