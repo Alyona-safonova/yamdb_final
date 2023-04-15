@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
@@ -13,15 +14,14 @@ from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework_simplejwt.views import TokenViewBase
 from reviews.models import Category, Genre, Review, Title
 from users.models import User
-from django.core.exceptions import ObjectDoesNotExist
 
 from .filters import TitleFilter
-from .permissions import IsAdminOrReadOnly, IsAuthorOrAdminOrReadOnly, IsAdmin
+from .permissions import IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdminOrReadOnly
 from .serializers import (CategorySerializer, CommentSerializer,
                           GenerateTokenSerializer, GenreSerializer,
-                          ReviewSerializer, TitleSerializer,
-                          UserSignUpSerializer, UserSignUpValidationSerializer,
-                          UserSerializerOrReadOnly, UserSerializer)
+                          ReviewSerializer, TitleSerializer, UserSerializer,
+                          UserSerializerOrReadOnly, UserSignUpSerializer,
+                          UserSignUpValidationSerializer)
 
 
 class Signup(APIView):
