@@ -2,9 +2,7 @@ import csv
 
 from django.conf import settings
 from django.core.management import BaseCommand
-
-from reviews.models import (Category, Comment, Genre, Title_Genre, Review,
-                            Title)
+from reviews.models import Category, Comment, Genre, Review, Title, Title_Genre
 from users.models import User
 
 TABLES_DICT = {
